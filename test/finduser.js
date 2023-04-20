@@ -12,7 +12,7 @@ describe('ActiveDirectory', function() {
   });
 
   describe('#findUser()', function() {
-    [ 'userPrincipalName', 'sAMAccountName', 'dn' ].forEach(function(userAttribute) {
+    [ 'userPrincipalName', 'sAMAccountName', 'dn', 'uid' ].forEach(function(userAttribute) {
       it('should return user for (' + userAttribute + ') ' + settings.username[userAttribute], function(done) {
         ad.findUser(settings.username[userAttribute], function(err, user) {
           if (err) return(done(err));
@@ -34,7 +34,7 @@ describe('ActiveDirectory', function() {
         'userPrincipalName', 'sAMAccountName', /*'objectSID',*/ 'mail',
         'lockoutTime', 'whenCreated', 'pwdLastSet', 'userAccountControl',
         'employeeID', 'sn', 'givenName', 'initials', 'cn', 'displayName',
-        'comment', 'description' 
+        'comment', 'description', 'uid' 
       ];
       ad.findUser(settings.username.userPrincipalName, function(err, user) {
         if (err) return(done(err));
